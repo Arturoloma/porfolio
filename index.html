@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+	
+  <head>
+    <meta http-equiv="Content-Type" content="text/html"; charset="utf-8">
+    <title>Arturo López - Desarrollador web front-end</title>
+    <meta name="description" content="Porfolio de Arturo López Márquez, desarrollador web front-end y técnico superior en animación 3D, juegos y entornos interactivos.">
+    <meta name="keywords" content="porfolio,portfolio,portafolio,cv,curriculum,Arturo,López,Márquez,web,front-end,developer,desarrollador">
+    <meta name="viewport" content="width=device-width", initial-scale="1">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+    <link href="./css/master.css" rel="stylesheet">
+    <script src="./js/main.js" defer></script>
+  </head>
+	
+  <body>
+    <header id="master-header">
+      <nav id="navbar">
+        <div id="logo-container">
+          <a id="logo-link" href="#welcome-section">
+                <img id="logo-blanco" class="unselectable logo-img" src="./images/logo-gris.png" alt="logo-blanco">
+            <img id="logo-gris"   class="unselectable logo-img" src="http://arturoloma.com/wp-content/uploads/2016/03/Arturo-L%C3%B3pez-Logo-Gris-210x150.png" alt="logo-gris">
+                <div id="logo-texts">
+                    <h2 id="logo-title" class="unselectable">ARTURO LÓPEZ MÁRQUEZ</h2>
+                    <h3 id="logo-subtitle" class="unselectable">Desarrollador web front-end</h3>
+                </div>
+          </a>
+        </div>
+				
+        <ul class="nav-button-list">
+          <li class="nav-button"><a id="nav-about" class="unselectable nav-link active" href="#welcome-section">Sobre mí</a></li>
+          <li class="nav-button"><a id="nav-proyectos" class="unselectable nav-link" href="#projects">Proyectos</a></li>
+          <li class="nav-button"><a id="nav-contacto" class="unselectable nav-link" href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </header>
+		
+		<main>			
+			<section id="welcome-section">				
+				<div id="about-container" class="container">
+					<header>
+						<h1 id="about-titulo" class="opacidad-variable">Arturo López Márquez.</h1>
+						<h2 id="about-subtitulo" class="opacidad-variable">Desarrollador web front-end.</h2>
+					</header>
+					<p id="descripcion" class="opacidad-variable">Gracias a la gran variedad de estudios que he cursado, tengo una buena visión global de los proyectos en los que me involucro y trabajo con flexibilidad. Además, mis dos años de experiencia haciendo videojuegos me han permitido desarrollar mi capacidad analítica y de trabajo en equipo.</p>
+					<a id="btn-proyectos" class="btn-welcome unselectable opacidad-variable" href="#projects">Proyectos<img class="icon-chevron-right" src="http://arturoloma.com/front-end/Images/png/chevron-right-white.png" alt=""></img></a>
+					<a id="btn-cv" class="btn-welcome unselectable opacidad-variable" href="https://drive.google.com/file/d/1Y3S866zUfNXO-RMoYJmCohHSY_2TinOk/view?usp=sharing" target="_blank">Currículum<img class="icon-chevron-right" src="http://arturoloma.com/front-end/Images/png/chevron-right-white.png" alt=""></img></a>
+				</div>		
+			</section>
+	
+			<section id="projects" class="container">
+				<a class="project-tile" href="https://wasabee.herokuapp.com/" target="_blank">
+					<img class="project-img" src="http://arturoloma.com/front-end/Images/png/wasabee.png" alt="preview-pagina-de-producto">
+					<div class="project-texts">
+						<header><h2>Wasabee - Juego online</h2></header>
+						<p>
+							Proyecto de equipo hecho en el marco de un curso de desarrollo web Front-end gestionado por la Fundación Telefónica y la Cámara de Comercio de Madrid.
+							Wasabee es una herramienta de gamificación de la mecanografía consistente en un juego para 1 ó 2 jugadores (online) en el que hay que completar un texto antes de que desaparezca.
+						</p>
+						<div>
+							<span class="project-tag">NodeJS</span>
+							<span class="project-tag">ExpressJS</span>
+							<span class="project-tag">Socket.io</span>
+						</div>
+					</div>
+				</a>
+				
+				<a class="project-tile" href="https://codepen.io/arturoloma/full/xNQybp" target="_blank">
+					<img class="project-img" src="http://arturoloma.com/front-end/Images/png/rest.png" alt="preview-lista-de-productos">
+					<div class="project-texts">
+						<header><h2>Lista de productos</h2></header>
+						<p>
+							Práctica de servicios REST con AJAX. El cliente coge el número que se le indique de datos de la API y los muestra con tarjetas responsive.
+						</p>
+						<div>
+							<span class="project-tag">REST</span>
+							<span class="project-tag">AJAX</span>
+							<span class="project-tag">Responsive</span>
+						</div>
+					</div>
+				</a>
+				
+				<a class="project-tile" href="https://codepen.io/arturoloma/full/OGVGbB" target="_blank">
+					<img class="project-img" src="http://arturoloma.com/front-end/Images/png/pagina-de-producto.png" alt="preview-pagina-de-producto">
+					<div class="project-texts">
+						<header><h2>Página de producto</h2></header>
+						<p>Simulación de una página de producto. En este caso aprendí sobre diseño adaptativo y preparación del código para SEO a base de flex (CSS3) y HTML5.</p>
+						<div>
+							<span class="project-tag">Responsive</span>
+							<span class="project-tag">SEO</span>
+							<span class="project-tag">JavaScript</span>
+						</div>
+					</div>
+				</a>
+				
+				<a class="project-tile" href="https://codepen.io/arturoloma/full/BEReep" target="_blank">
+					<img class="project-img" src="http://arturoloma.com/front-end/Images/png/documentacion-tecnica.png" alt="preview-documentacion-tecnica">
+					<div class="project-texts">
+						<header><h2>Documentación técnica de CSS3</h2></header>
+						<p>Preparación de documentación técnica de CSS3 para practicar diseño adaptativo y preparar apuntes como recurso de trabajo.</p>
+						<div>
+							<span class="project-tag">Responsive</span>
+						</div>
+					</div>
+				</a>
+				
+				<a class="project-tile" href="https://codepen.io/arturoloma/full/ywwMmO" target="_blank">
+					<img class="project-img" src="http://arturoloma.com/front-end/Images/png/calculadora.png" alt="preview-calculadora">
+					<div class="project-texts">
+						<header><h2>Calculadora</h2></header>
+						<p>Ejercicio de calculadora para asentar mis conocimientos sobre JavaScript en ES5 y grids de CSS3.</p>
+						<div>
+							<span class="project-tag">CSS3 Grid</span>
+							<span class="project-tag">JavaScript</span>
+						</div>
+					</div>
+				</a>
+				
+				<a class="project-tile" href="https://codepen.io/arturoloma/full/Bbqegx" target="_blank">
+					<img class="project-img" src="http://arturoloma.com/front-end/Images/png/contacto.png" alt="preview-formulario-de-contacto">
+					<div class="project-texts">
+						<header><h2>Formulario de contacto</h2></header>
+						<p>Formulario de contacto hecho como práctica de HTML5, CSS3 y JavaScript básico. Me centré en hacer un formulario lo más completo posible, que comprobara la validez de los datos antes de enviarlos y que tuviera una sintaxis correcta de cara a SEO y lectores de pantalla.</p>
+						<div>
+							<span class="project-tag">Formularios</span>
+							<span class="project-tag">SEO</span>
+						</div>
+					</div>
+				</a>
+				
+				<a class="project-tile" href="https://codepen.io/arturoloma/full/WmKLbp" target="_blank">
+					<img class="project-img" src="http://arturoloma.com/front-end/Images/png/tributo.png" alt="preview-tributo-a-walt-disney">
+					<div class="project-texts">
+						<header><h2>Tributo a Walt Disney</h2></header>
+						<p>Maquetación de una página de tributo a la figura de Walt Disney. Esta práctica me sirvió para asentar las bases de CSS3 y de sintaxis en HTML5.</p>
+						<div>
+							<span class="project-tag">HTML5</span>
+							<span class="project-tag">CSS3</span>
+						</div>
+					</div>
+				</a>
+			</section>	
+		</main>
+		
+		<footer id="contacto">
+			<address>
+				<div class="contact-row">
+					<a href="mailto:arturoloma3d@gmail.com?Subject=Buenos%20días,%20Arturo"><img class="contact-img" src="http://arturoloma.com/front-end/Images/png/icon-email.png" alt=""><span class="contact-text">arturoloma3d@gmail.com</span></a>
+				</div>
+				<div class="contact-row">
+					<a href="https://www.linkedin.com/in/arturoloma" target="_blank"><img class="contact-img" src="http://arturoloma.com/front-end/Images/png/icon-linkedin.png" alt=""><span class="contact-text">www.linkedin.com/in/arturoloma</span></a>
+				</div>
+			</address>
+		</footer>
+  </body>
+</html>
