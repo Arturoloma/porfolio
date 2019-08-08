@@ -19,8 +19,8 @@ var _navLinkClick = false;
 
 
 //* LISTENERS
-window.addEventListener("load", DeterminarOpacidadNav, false);
-window.addEventListener("scroll", DeterminarOpacidadNav, false);
+window.addEventListener("load", function(){ DeterminarNavLink(); DeterminarOpacidadNav(); }, false);
+window.addEventListener("scroll", function(){ DeterminarNavLink(); DeterminarOpacidadNav(); }, false);
 document.getElementById("nav-about").addEventListener("click", function(){ AdministrarNavLink('nav-about') }, false);
 document.getElementById("nav-proyectos").addEventListener("click", function(){ AdministrarNavLink('nav-proyectos') }, false);
 document.getElementById("nav-contacto").addEventListener("click", function(){ AdministrarNavLink('nav-contacto') }, false);
@@ -83,8 +83,7 @@ function OnScrollEnd (callback) {
  * la orden para cambiar su aspecto si fuera necesario.
  */
 function DeterminarOpacidadNav() {
-    DeterminarNavLink();
-	
+
 	if (!_navOpaco) {
 		if (window.pageYOffset > window.innerHeight - _navHeight) {
 			_navOpaco = true;
@@ -205,8 +204,12 @@ function ActivarNavLink(navLinkId) {
 
 	for (var i = 0 ; i < navlinks.length ; i++)	{
 		navlinks[i].classList.remove("active");
-	}
-	document.getElementById(navLinkId).classList.add("active");
+    }
+    document.getElementById(navLinkId).classList.add("active");
+    
+    // Quito el focus al elemento que lo tenga si es un botón del navegador para evitar que permanezca "activo"
+    //if (document.activeElement.classList.contains("nav-link")) { document.activeElement.blur(); }
+    
 }
 return {
     navHeight: _navHeight
