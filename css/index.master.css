@@ -122,7 +122,7 @@ select:focus, textarea:focus, input:focus {
 .nav-link:visited {
 	color: white;
 }
-:root:not(.can-touch) .nav-link:hover, .nav-link:active, .nav-link.active {
+.nav-link.hover, .nav-link:active, .nav-link.active {
 	background-image: repeating-linear-gradient(transparent 0px,
 												transparent calc(100% - 5px),
 												var(--theme-color,MediumVioletRed) calc(100% - 5px),

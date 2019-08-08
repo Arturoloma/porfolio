@@ -4,6 +4,8 @@ var navegador = (function(){
 //* VARIABLES
 // Extraigo el número de lo que contenga la variable --nav-height (porque tendrá alguna unidad) y lo convierto en Number.
 const _navHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue("--nav-height").match(/\d+/));
+// Botones del navegador
+var _navBtns = document.getElementsByClassName("nav-link");
 
 /// Posiciones en el eje vertical de las secciones de la página
 const _posAbout    = ObtenerPosicionY(document.getElementById("welcome-section"));
@@ -24,6 +26,12 @@ window.addEventListener("scroll", function(){ DeterminarNavLink(); DeterminarOpa
 document.getElementById("nav-about").addEventListener("click", function(){ AdministrarNavLink('nav-about') }, false);
 document.getElementById("nav-proyectos").addEventListener("click", function(){ AdministrarNavLink('nav-proyectos') }, false);
 document.getElementById("nav-contacto").addEventListener("click", function(){ AdministrarNavLink('nav-contacto') }, false);
+if (document.documentElement.classList.contains("can-touch") === false) {
+	for (var cicle = 0 ; cicle < _navBtns.length ; cicle++) {
+		_navBtns[cicle].addEventListener("mouseover", function(){ this.classList.add("hover"); }, false);
+		_navBtns[cicle].addEventListener("mouseout", function(){ this.classList.remove("hover"); }, false);
+	}
+}
 
 
 
@@ -102,9 +110,7 @@ function DeterminarOpacidadNav() {
  * MostrarNavOpaco()
  * Activa la transición de la barra del navegador para que se vuelva opaco.
  */
-function MostrarNavOpaco() {
-
-	var navBtns = document.getElementsByClassName("nav-link");
+function MostrarNavOpaco() {	
 
 	// Logo
 	document.getElementById("logo-blanco").classList.add("hidden");
@@ -114,8 +120,8 @@ function MostrarNavOpaco() {
 	document.getElementById("master-header").classList.add("navbar-opaque");
 	
 	// Fuentes
-	for (var i = 0 ; i < navBtns.length ; i++) {
-		navBtns[i].classList.add("navbar-opaque");
+	for (var i = 0 ; i < _navBtns.length ; i++) {
+		_navBtns[i].classList.add("navbar-opaque");
 	}
 	document.getElementById("logo-title").classList.add("navbar-opaque");	
 	document.getElementById("logo-subtitle").classList.add("navbar-opaque");
@@ -128,8 +134,6 @@ function MostrarNavOpaco() {
  */
 function MostrarNavTransparente() {
 
-	var navBtns = document.getElementsByClassName("nav-link");
-
 	// Logo
 	document.getElementById("logo-blanco").classList.remove("hidden");
 	document.getElementById("logo-gris").classList.add("hidden");
@@ -138,8 +142,8 @@ function MostrarNavTransparente() {
 	document.getElementById("master-header").classList.remove("navbar-opaque");
 	
 	// Fuentes
-	for (var i = 0 ; i < navBtns.length ; i++) {
-		navBtns[i].classList.remove("navbar-opaque");
+	for (var i = 0 ; i < _navBtns.length ; i++) {
+		_navBtns[i].classList.remove("navbar-opaque");
 	}
 	document.getElementById("logo-title").classList.remove("navbar-opaque");
 	document.getElementById("logo-subtitle").classList.remove("navbar-opaque");
@@ -200,10 +204,8 @@ function ActivarNavLink(navLinkId) {
 		return;
 	} //! ----------------
 
-	var navlinks = document.getElementsByClassName("nav-link");
-
-	for (var i = 0 ; i < navlinks.length ; i++)	{
-		navlinks[i].classList.remove("active");
+	for (var i = 0 ; i < _navBtns.length ; i++)	{
+		_navBtns[i].classList.remove("active");
     }
     document.getElementById(navLinkId).classList.add("active");
     
