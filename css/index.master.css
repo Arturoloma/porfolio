@@ -11,6 +11,8 @@
 	font-size: 66.67%;
 }
 * {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
@@ -98,11 +100,11 @@ select:focus, textarea:focus, input:focus {
 	display: flex;
 	width: 100%;
 	justify-content: space-between;
+	padding: 0 9%;
 }
 .nav-button-list {
 	display: flex;
 	list-style-type: none;
-	padding-right: 9%;
 }
 .nav-button {
 	display: flex;
@@ -131,7 +133,6 @@ select:focus, textarea:focus, input:focus {
 }
 #logo-container {
   	display: flex;
-	padding-left: 9%;
 }
 #logo-container:focus{
 	border-style: none;
@@ -375,9 +376,6 @@ select:focus, textarea:focus, input:focus {
 	}
 	#logo-container { 
 		display: none;
-	}
-	.nav-button-list {
-		padding: 0;
 	}
 	#welcome-section {
 		height: auto;
