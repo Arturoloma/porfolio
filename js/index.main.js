@@ -1,9 +1,11 @@
+'use strict'
 
+// VARIABLES
 // Extraigo el número de lo que contenga la variable --nav-height (porque tendrá alguna unidad) y lo convierto en Number.
 const navHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue("--nav-height").match(/\d+/));
 
 /// Posiciones en el eje vertical de las secciones de la página
-const posAbout 		= ObtenerPosicionY(document.getElementById("welcome-section"));
+const posAbout 	  = ObtenerPosicionY(document.getElementById("welcome-section"));
 const posProjects = ObtenerPosicionY(document.getElementById("projects"));
 const posContacto = ObtenerPosicionY(document.getElementById("contacto"));
 
@@ -21,46 +23,10 @@ var welcomeOpacityEnd = window.innerHeight * 0.6;
 
 
 
-function ObtenerPosicionY(elemento) {
-	var posicionY = 0;
-
-	while(elemento)	{
-		// Acumulo la distancia respecto al top del padre, restándole lo que haya scrolleado y sumando el borde del padre
-		posicionY += (elemento.offsetTop - elemento.scrollTop + elemento.clientTop);
-		elemento = elemento.offsetParent;
-	}
-	return posicionY;
-}
-
-
-/**
-	 * OnScrollEnd() determina si el usuario está haciendo scroll.
-	 * Cuando el scroll pare, llamará a un callback.
-	 */
-function OnScrollEnd (callback) {
-	// Para asegurarme de que HAY callback y de que es una función
-	if (!callback || typeof callback !== 'function') { return; }
-
-	// En esta variable almaceno el timeout cada vez que hay un evento de scroll
-	var isScrolling;
-
-	window.addEventListener('scroll', function (event) {
-		// En cada evento de scroll, presupongo que el usuario no ha parado de scrollear, así que borro el timeout para evitar que se llame al callback
-		window.clearTimeout(isScrolling);
-
-		// Almaceno el timeout para poder resetearlo en caso de que vuelva a haber un evento de scroll antes de que pase el tiempo del timeout
-		isScrolling = setTimeout(function() {
-			callback();
-		}, 66);
-	}, false);
-}
-
-
+// LISTENERS
 document.getElementById("nav-about").addEventListener("click", function(){ AdministrarNavLink('nav-about') }, false);
 document.getElementById("nav-proyectos").addEventListener("click", function(){ AdministrarNavLink('nav-proyectos') }, false);
 document.getElementById("nav-contacto").addEventListener("click", function(){ AdministrarNavLink('nav-contacto') }, false);
-
-
 window.addEventListener("scroll", function() {
 	DeterminarNavLink();
 	
@@ -80,6 +46,61 @@ window.addEventListener("scroll", function() {
 }, false);
 
 
+
+// FUNCIONES
+/**
+ * ObtenerPosicionY()
+ * Obtiene la posición en la página, el eje Y, de un elemento.
+ * @param elemento:object
+ */
+function ObtenerPosicionY(elemento) {
+	//! Control de errores
+	if (!elemento || typeof elemento !== 'object') {
+		console.error("Argumento del parámetro de ObtenerPosicionY(elemento) es incorrecto.");
+		return;
+	} //! Fin control de errores
+	
+	var posicionY = 0;
+
+	while(elemento)	{
+		// Acumulo la distancia respecto al top del padre, restándole lo que haya scrolleado y sumando el borde del padre
+		posicionY += (elemento.offsetTop - elemento.scrollTop + elemento.clientTop);
+		elemento = elemento.offsetParent;
+	}
+	return posicionY;
+}
+
+
+/**
+ * OnScrollEnd() es un evento personalizado que determina si el usuario ha terminado un scroll.
+ * @param callback:function
+ */
+function OnScrollEnd (callback) {
+	//! Control de errores
+	if (!callback || typeof callback !== 'function') {
+		console.error("Argumento del parámetro de OnScrollEnd(callback) es incorrecto.");
+		return;
+	} //! Fin control de errores
+
+	// En esta variable almaceno el timeout cada vez que hay un evento de scroll
+	var isScrolling;
+
+	window.addEventListener('scroll', function (event) {
+		// En cada evento de scroll, presupongo que el usuario no ha parado de scrollear, así que borro el timeout para evitar que se llame al callback.
+		window.clearTimeout(isScrolling);
+
+		// Almaceno el timeout para poder resetearlo en caso de que vuelva a haber un evento de scroll antes de que pase el tiempo del timeout.
+		isScrolling = setTimeout(function() {			
+			callback();
+		}, 100);
+	}, false);
+}
+
+
+/**
+ * MostrarNavOpaco()
+ * Activa la transición de la barra del navegador para que se vuelva opaco.
+ */
 function MostrarNavOpaco() {
 
 	var navBtns = document.getElementsByClassName("nav-link");
@@ -100,6 +121,10 @@ function MostrarNavOpaco() {
 }
 
 
+/**
+ * MostrarNavTransparente()
+ * Activa la transición de la barra del navegador para que se vuelva transparente.
+ */
 function MostrarNavTransparente() {
 
 	var navBtns = document.getElementsByClassName("nav-link");
@@ -120,6 +145,10 @@ function MostrarNavTransparente() {
 }
 
 
+/**
+ * CalcularOpacidadWelcomeSection()
+ * Calcula la opacidad de los elementos de la sección de bienvenida a medida que se hace scroll.
+ */
 function CalcularOpacidadWelcomeSection() {
 	
 	// Porcentaje del recorrido entre start y end en función del scroll vertical interpolando linearmente
@@ -136,9 +165,10 @@ function CalcularOpacidadWelcomeSection() {
 
 
 /**
-	 * DeterminarNavLink() calcula en qué zona de la página está el usuario y
-	 * llama a la función ActivarNavLink(), pasándole esa información como parámetro.
-	 */
+ * DeterminarNavLink()
+ * Al scrollear, calcula en qué zona de la página está el usuario y ordena activar el
+ * botón que corresponda en el navegador en función del resultado.
+ */
 function DeterminarNavLink() {
 	// Sólo quiero cambiar el botón activo por scroll si el scroll no es debido a que el usuario ha pulsado un botón de la barra de navegación
 	if (!navLinkClick) {
@@ -157,17 +187,39 @@ function DeterminarNavLink() {
 }
 
 
+/**
+ * AdministrarNavLink()
+ * Ordena activar el botón presionado y bloquea la gestión de botón activo por scroll
+ * hasta que el scroll termine.
+ * @param navLinkId:string
+ */
 function AdministrarNavLink(navLinkId) {
+	//! Control de errores
+	if (!navLinkId || typeof navLinkId !== 'string') {
+		console.error("Argumento del parámetro de AdministrarNavLink(navLinkId) es incorrecto.");
+		return;
+	} //! Fin control de errores
+
 	navLinkClick = true;
 	ActivarNavLink(navLinkId);
 	OnScrollEnd(function() { navLinkClick = false; });
 }
 
-
+/**
+ * ActivarNavLink()
+ * Ejecuta la activación visual del botón del navegador indicado y desactiva todos los demás.
+ * @param navLinkId:string
+ */
 function ActivarNavLink(navLinkId) {
+	//! Control de errores
+	if (!navLinkId || typeof navLinkId !== 'string') {
+		console.error("Argumento del parámetro de ActivarNavLink(navLinkId) es incorrecto.");
+		return;
+	} //! Fin control de errores
+
 	var navlinks = document.getElementsByClassName("nav-link");
 
-	for (i = 0 ; i < navlinks.length ; i++)	{
+	for (var i = 0 ; i < navlinks.length ; i++)	{
 		navlinks[i].classList.remove("active");
 	}
 	document.getElementById(navLinkId).classList.add("active");
