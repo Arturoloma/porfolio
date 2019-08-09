@@ -9,6 +9,25 @@ var welcomeOpacityStart = window.innerHeight * 0.15;
 var welcomeOpacityEnd = window.innerHeight * 0.6;
 
 //* LISTENERS
+window.addEventListener("load", function(){
+	// Sustituyo el body por texto que indica que actualizes el navegador si es Internet Explorer
+	if (usedBrowser.isIE) {
+		document.body.innerHTML = "";
+		var request = new XMLHttpRequest();
+		request.open("GET", "https://arturoloma.com/node/old-browser/", true);
+		request.send();
+
+		request.onreadystatechange = function() {
+			if (request.readyState === 4) {
+				if (request.status === 200) {
+					document.body.innerHTML = request.responseText;
+				} else {
+					console.error("Couldn't retrieve the message to inform IE users to update or switch browser. Error: " + request.status);
+				}
+			}
+		}
+	}
+});
 window.addEventListener("scroll", function() {
 	
 	if (welcomeOpacityStart <= window.pageYOffset <= welcomeOpacityEnd) {

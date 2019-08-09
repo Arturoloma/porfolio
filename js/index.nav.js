@@ -26,12 +26,6 @@ window.addEventListener("scroll", function(){ DeterminarNavLink(); DeterminarOpa
 document.getElementById("nav-about").addEventListener("click", function(){ AdministrarNavLink('nav-about') }, false);
 document.getElementById("nav-proyectos").addEventListener("click", function(){ AdministrarNavLink('nav-proyectos') }, false);
 document.getElementById("nav-contacto").addEventListener("click", function(){ AdministrarNavLink('nav-contacto') }, false);
-if (document.documentElement.classList.contains("can-touch") === false) {
-	for (var cicle = 0 ; cicle < _navBtns.length ; cicle++) {
-		_navBtns[cicle].addEventListener("mouseover", function(){ this.classList.add("hover"); }, false);
-		_navBtns[cicle].addEventListener("mouseout", function(){ this.classList.remove("hover"); }, false);
-	}
-}
 
 
 
