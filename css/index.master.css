@@ -81,6 +81,22 @@ select:focus, textarea:focus, input:focus {
 
 /* ------------------------------ */
 /* --------- ESCRITORIO --------- */
+#old-browser {
+	display: block;
+	position: fixed;
+	background: rgb(250, 250, 250);
+	width: 100%;
+	height: 100%;
+	z-index: 2000;
+}
+#old-browser-text-container {
+	display: block;
+	position: absolute;
+	width: 100%;
+	bottom: 50vh;
+	text-align: center;
+	font-size: 2.1rem;
+}
 
 /* ----------- header ----------- */
 #master-header {
@@ -122,7 +138,7 @@ select:focus, textarea:focus, input:focus {
 .nav-link:visited {
 	color: white;
 }
-.nav-link:hover, .nav-link:active, .nav-link.active {
+:root:not(.can-touch) .nav-link:hover, .nav-link:active, .nav-link.active {
 	background-image: repeating-linear-gradient(transparent 0px,
 												transparent calc(100% - 5px),
 												var(--theme-color,MediumVioletRed) calc(100% - 5px),
@@ -182,7 +198,7 @@ select:focus, textarea:focus, input:focus {
 #welcome-section{
 	display: flex;
 	padding-top: var(--nav-height);
-	background-image: url("../images/cover.jpg");
+	background-image: url("../images/cover-small.jpg");
 	background-size: cover;
 	background-attachment: fixed;
 	background-position: center;
